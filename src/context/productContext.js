@@ -6,26 +6,32 @@ import {
   useState,
 } from "react";
 import axios from "axios";
-// import ProductReducer from "../reducer/productReducer";
+import reducer from "../reducer/productReducer";
 export const myDataContext = createContext();
-export const reducer = (d, a) => {};
 
+const initialState = {
+  isLoading: false,
+  isError: false,
+  products: [],
+  featureProducts: [],
+};
 export const DataComponentContext = ({ children }) => {
-  const initialState = {
-    isLoading: false,
-    isError: false,
-    products: [],
-    featureProducts: [],
-  };
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const API = "https://api.pujakaitem.com/api/products";
 
   const getProducts = async (API) => {
-    const res = await axios.get(API);
-    console.log("response", res);
-    const products = await res.data;
+    dispatch({ type: "SET_LOADING" });
+    try {
+      const res = await axios.get(API);
+      console.log("response", res);
+      const products = await res.data;
+      console.log("Products", products);
+      dispatch({ type: "SET_API_DATA", payload: products });
+      console.log("response ...state", ...state);
+    } catch (error) {
+      dispatch({ type: "API_ERROR" });
+    }
   };
 
   useEffect(() => {

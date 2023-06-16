@@ -1,7 +1,6 @@
 import { Button } from "@material-tailwind/react";
 import React from "react";
 import { NavLink } from "react-router-dom";
-import FormatPrice from "../Helpers/FormatPrice";
 
 export default function Product(item) {
   const { id, name, image, price, category } = item;
@@ -72,9 +71,7 @@ export default function Product(item) {
               </span>
             </div>
             <div class="flex items-center justify-between">
-              <span class="text-3xl font-bold text-gray-900 dark:text-white">
-                {<FormatPrice price={price} />}
-              </span>
+              <span class="text-3xl font-bold text-gray-900 dark:text-white"></span>
               <Button
                 href="#"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
