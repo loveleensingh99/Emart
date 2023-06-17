@@ -14,12 +14,15 @@ const initialState = {
   isError: false,
   products: [],
   featureProducts: [],
+  isSingleLoading: false,
+  singleProduct: {},
 };
 export const DataComponentContext = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const API = "https://api.pujakaitem.com/api/products";
 
+  //Get All Products
   const getProducts = async (API) => {
     dispatch({ type: "SET_LOADING" });
     try {
@@ -34,12 +37,27 @@ export const DataComponentContext = ({ children }) => {
     }
   };
 
+  //Get Single  Product
+
+  const getSingleProduct = async (url) => {
+    dispatch({ type: "SET_SINGLE_LOADING" });
+    try {
+      const res = await axios.get(url);
+      console.log("SingleProduct Response=", res);
+      const singleProduct = await res.data;
+      dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
+      console.log("getSingleProduct ...state", ...state);
+    } catch (error) {
+      dispatch({ type: "SET_SINGLE_ERROR" });
+    }
+  };
+
   useEffect(() => {
     getProducts(API);
   }, []);
 
   return (
-    <myDataContext.Provider value={{ ...state }}>
+    <myDataContext.Provider value={{ ...state, getSingleProduct }}>
       {children}
     </myDataContext.Provider>
   );
