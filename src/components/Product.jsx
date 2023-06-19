@@ -74,7 +74,7 @@ export default function Product(item) {
               </span>
             </div>
             <div class="flex items-center justify-between">
-              <span class="text-3xl font-bold text-gray-900  ">
+              <span class="text-xl md:text-2xl xl:text-3xl font-bold text-gray-900  ">
                 <FormatPrice price={price} />
               </span>
               <Button
