@@ -55,43 +55,43 @@ export default function SingleProduct() {
       <div className="px-2 xl:px-8 md:px-4">
         <PageNavigation title={name} />
 
-        <section class="pt-12 pb-24 bg-blueGray-100 rounded-b-10xl overflow-hidden">
-          <div class="container px-4 mx-auto">
-            <div class="flex flex-wrap -mx-4">
-              <div class="w-full px-4"></div>
+        <section className="pt-12 pb-24 bg-blueGray-100 rounded-b-10xl overflow-hidden">
+          <div className="container px-4 mx-auto">
+            <div className="flex flex-wrap -mx-4">
+              <div className="w-full px-4"></div>
               <ProductImages images={image} />
-              <div class="w-full lg:w-1/2 px-4">
-                <div class="max-w-md mb-4">
-                  <span class="text-xs text-gray-400 tracking-wider">{id}</span>
-                  <h2 class="mt-5 mb-3 text-lg md:text-2xl lg:text-3xl font-heading font-medium">
+              <div className="w-full lg:w-1/2 px-4">
+                <div className="max-w-md mb-4">
+                  <span className="text-xs text-gray-400 tracking-wider">{id}</span>
+                  <h2 className="mt-5 mb-3 text-lg md:text-2xl lg:text-3xl font-heading font-medium">
                     Apple iPhone 12 Pro (128GB) - Silver
                   </h2>
-                  <p class="flex items-center mb-2">
-                    <span class="mr-2 text-sm font-medium">MRP:</span>
-                    <span class="text-2xl font-medium">
+                  <p className="flex items-center mb-2">
+                    <span className="mr-2 text-sm font-medium">MRP:</span>
+                    <span className="text-2xl font-medium">
                       <del>
                         {" "}
                         <FormatPrice price={price + 250000} />{" "}
                       </del>
                     </span>
                   </p>
-                  <p class="flex items-center mb-4">
-                    <span class="mr-2 text-sm text-blue-500 font-medium">
+                  <p className="flex items-center mb-4">
+                    <span className="mr-2 text-sm text-blue-500 font-medium">
                       Deal of the day:
                     </span>
-                    <span class="text-2xl text-blue-500 font-medium">
+                    <span className="text-2xl text-blue-500 font-medium">
                       <FormatPrice price={price} />{" "}
                     </span>
                   </p>
                 </div>
-                <div class="flex mb-4 items-center">
+                <div className="flex mb-4 items-center">
                   <div className="flex pr-2 space-x-1">
                     <Star stars={stars} reviews={reviews} />
                   </div>
 
-                  <span class="text-md text-gray-400">{` Customer Reviews (${reviews})`}</span>
+                  <span className="text-md text-gray-400">{` Customer Reviews (${reviews})`}</span>
                 </div>
-                <div class="mb-4">
+                <div className="mb-4">
                   {/* <SelectColorS price={price} colors={colors} /> */}
 
                   <SelectColor
@@ -108,31 +108,31 @@ export default function SingleProduct() {
                 </div>
 
                 <div className="mb-2 space-y-1">
-                  <h4 class="  font-heading font-medium">
+                  <h4 className="  font-heading font-medium">
                     <span className="text-gray-400">Available:</span>
                     <span>{stock > 0 ? " In Stock" : " Not Available"}</span>
                   </h4>
 
-                  <h4 class=" font-heading font-medium">
+                  <h4 className=" font-heading font-medium">
                     <span className="text-gray-400">Brand:</span>
-                    <span class=""> {company}</span>
+                    <span className=""> {company}</span>
                   </h4>
                 </div>
-                <div class="flex flex-wrap -mx-2 mb-12">
-                  <div class="w-full md:w-2/3 px-2 mb-2 md:mb-0">
+                <div className="flex flex-wrap -mx-2 mb-12">
+                  <div className="w-full md:w-2/3 px-2 mb-2 md:mb-0">
                     <a
-                      class="block py-1 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
+                      className="block py-1 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
                       href="#"
                     >
                       Add to bag
                     </a>
                   </div>
-                  <div class="w-full md:w-1/3 px-2">
+                  <div className="w-full md:w-1/3 px-2">
                     <a
-                      class="flex w-full py-1 px-2 items-center justify-center leading-8 font-heading font-medium tracking-tighter text-xl text-center bg-white focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50 hover:bg-opacity-60 rounded-xl"
+                      className="flex w-full py-1 px-2 items-center justify-center leading-8 font-heading font-medium tracking-tighter text-xl text-center bg-white focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50 hover:bg-opacity-60 rounded-xl"
                       href="#"
                     >
-                      <span class="mr-2">Wishlist</span>
+                      <span className="mr-2">Wishlist</span>
                       <svg
                         width="23"
                         height="22"
@@ -150,7 +150,7 @@ export default function SingleProduct() {
                       </svg>
                     </a>
                   </div>
-                  <p class="text-lg  mt-2">
+                  <p className="text-lg  mt-2">
                     <span className="text-gray-400">Description: </span>
                     {description}
                   </p>

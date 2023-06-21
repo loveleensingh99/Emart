@@ -1,29 +1,18 @@
 import { Button } from "@material-tailwind/react";
-import React, {
-  createContext,
-  useMemo,
-  useReducer,
-  useRef,
-  useState,
-} from "react";
+import React from "react";
+import { FeatureProducts } from "src/components/FeatureProduct";
+import FilterSidebar from "src/components/FilterSidebar";
+import Product from "src/components/Product";
+import ShopProducts from "src/components/ShopProducts";
 
 export default function Products() {
-  const [increaseNumber, setIncreaseNumber] = useState(0);
-
-  const random = useMemo(() => {
-    return Math.random();
-  }, [increaseNumber]);
   return (
     <>
-      <Button
-        onClick={() => {
-          setIncreaseNumber(increaseNumber + 1);
-        }}
-      >
-        {increaseNumber}
-      </Button>
+      <div className=" grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start px-5">
+        <FilterSidebar />
 
-      <p>{random}</p>
+        <ShopProducts />
+      </div>
     </>
   );
 }

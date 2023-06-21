@@ -25,9 +25,9 @@ export const Star = ({ stars, reviews }) => {
     <>
       {arr.map((ele) => {
         if (ele) {
-          return <FaStar className="text-yellow-500  text-lg" />;
+          return <FaStar className="text-lg text-yellow-500" />;
         } else {
-          return <AiOutlineStar className="text-yellow-500  text-xl" />;
+          return <AiOutlineStar className="text-xl text-yellow-500" />;
         }
       })}
     </>
@@ -43,8 +43,8 @@ export const SelectColor = ({ colors, onColorUpdate }) => {
   };
 
   return (
-    <>ks
-      <div className="flex  space-x-2">
+    <>
+      <div className="flex space-x-2">
         {colors.map((colorCode) => (
           <button
             className={`inline-flex items-center justify-center p-1 rounded-full  ${
@@ -70,7 +70,7 @@ export const SelectColorS = ({ price, colors }) => (
       Hello Hello{price}
       {colors.map((colorCode) => (
         <button
-          className="inline-flex items-center justify-center p-1 rounded-full border border-gray-300"
+          className="inline-flex items-center justify-center p-1 border border-gray-300 rounded-full"
           key={colorCode}
         >
           {colorCode}

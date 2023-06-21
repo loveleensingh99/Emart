@@ -26,12 +26,12 @@ export default function Nav() {
               <div className="flex items-center flex-shrink-0">
                 <img
                   className="block w-auto h-8 lg:hidden hover:filter hover:grayscale hover:brightness-200"
-                  src="./images/logo.svg"
+                  src="/images/logo.svg"
                   alt="E-Mart"
                 ></img>{" "}
                 <img
                   className="hidden w-auto h-8 lg:block hover:filter hover:grayscale hover:brightness-200"
-                  src="./images/logo.svg"
+                  src="/images/logo.svg"
                   alt="E-Mart"
                 ></img>
               </div>

@@ -14,11 +14,11 @@ export const FeatureProducts = () => {
 
       <Heading text="Featured Products" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
-        {featureProducts.map((item) => {
-          return <Product key={item.id} {...item} />;
-        })}
-      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+          {featureProducts.map((item) => {
+            return <Product key={item.id} {...item} />;
+          })}
+        </div>
     </>
   );
 };

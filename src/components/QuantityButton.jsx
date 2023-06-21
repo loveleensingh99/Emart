@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 
 export default function QuantityButton({ stock, updateQuantity }) {
-  stock = 0;
   const [amount, setAmount] = useState(0);
   console.log("Amount", amount);
   console.log("stock", stock);
@@ -19,32 +18,30 @@ export default function QuantityButton({ stock, updateQuantity }) {
   }, [amount]);
   return (
     <>
-      <div class="mb-3">
-        <h4 class="mb-3 font-heading font-medium">Quantity:</h4>
-        <div class="custom-number-input h-10 w-32">
-          <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 ">
+      <div className="mb-3">
+        <h4 className="mb-3 font-heading font-medium">Quantity:</h4>
+        <div className="custom-number-input h-10 w-32">
+          <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 ">
             <button
               data-action="decrement"
-              class={`  text-gray-600 hover:text-gray-700 border hover:bg-blue-100 hover:border-blue-500  h-full w-20 rounded-l cursor-pointer outline-none`}
+              className={`  text-gray-600 hover:text-gray-700 border hover:bg-blue-100 hover:border-blue-500  h-full w-20 rounded-l cursor-pointer outline-none`}
               onClick={() => setDecrease()}
-              disabled={true}
             >
-              <span class="m-auto text-2xl font-thin">−</span>
+              <span className="m-auto text-2xl font-thin">−</span>
             </button>
             <input
               type="number"
-              class="outline-none focus:outline-none text-center w-full focus:ring-blue-500  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none border   "
+              className="outline-none focus:outline-none text-center w-full focus:ring-blue-500  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none border   "
               name="custom-input-number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
             <button
               data-action="increment"
-              class=" text-gray-600 hover:text-gray-700 border hover:bg-blue-100  hover:border-blue-500   h-full w-20 rounded-r cursor-pointer"
+              className=" text-gray-600 hover:text-gray-700 border hover:bg-blue-100  hover:border-blue-500   h-full w-20 rounded-r cursor-pointer"
               onClick={() => setIncrease()}
-              disabled={stock == 0}
             >
-              <span class="m-auto text-2xl font-thin">+</span>
+              <span className="m-auto text-2xl font-thin">+</span>
             </button>
           </div>
         </div>
