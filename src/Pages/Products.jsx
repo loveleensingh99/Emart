@@ -7,14 +7,12 @@ import ShopProducts from "src/components/ShopProducts";
 import { useFilterContext } from "src/context/filterContext";
 
 export default function Products() {
-
- 
   return (
     <>
       <div className=" grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start px-5">
         <FilterSidebar />
 
-        <ShopProducts  /> 
+        <ShopProducts />
       </div>
     </>
   );

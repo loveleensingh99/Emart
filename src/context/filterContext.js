@@ -1,4 +1,4 @@
-import { filterReducer } from "src/reducer/filterReducter";
+import { filterReducer } from "src/reducer/filterReducer";
 import { useProductContext } from "./productContext";
 
 const { createContext, useContext, useReducer, useEffect } = require("react");
@@ -9,6 +9,9 @@ const initialState = {
   allProducts: [],
   gridView: true,
   sortingValue: "lowest",
+  filters: {
+    searchValue: "",
+  },
 };
 
 //what is useState
@@ -40,12 +43,29 @@ export const FilterContextProvider = ({ children }) => {
   // }, [state.sortingValue]);
 
   useEffect(() => {
+    dispatch({ type: "FILTER_PRODUCTS" });
+  }, [products, state.filters]);
+
+  const updateFilterValue = (event) => {
+    let name = event.target.name;
+    let value = event.target.value;
+    console.log("inside updateFilterValue");
+    return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } });
+  };
+
+  useEffect(() => {
     dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
   }, [products]);
 
   return (
     <FilterContext.Provider
-      value={{ ...state, setGridView, setListView, handleSortChange }}
+      value={{
+        ...state,
+        setGridView,
+        setListView,
+        handleSortChange,
+        updateFilterValue,
+      }}
     >
       {children}
     </FilterContext.Provider>

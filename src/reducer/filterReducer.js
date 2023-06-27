@@ -49,6 +49,32 @@ export const filterReducer = (state, action) => {
         filterProducts: newSortData,
       };
 
+    case "UPDATE_FILTER_VALUE": {
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [name]: value,
+        },
+      };
+    }
+
+    case "FILTER_PRODUCTS": {
+      let { allProducts } = state;
+      let tempFilterProducts = [...allProducts];
+
+      const { searchValue } = state.filters;
+      if (searchValue) {
+        tempFilterProducts = tempFilterProducts.filter((curEle) => {
+          return curEle.name.toLowerCase().includes(searchValue.toLowerCase());
+        });
+      }
+      return {
+        ...state,
+        filterProducts: tempFilterProducts,
+      };
+    }
     default:
       return state;
   }

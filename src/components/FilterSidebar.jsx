@@ -1,6 +1,7 @@
 import { Slider } from "@material-tailwind/react";
 import React from "react";
 import { SelectColor } from "./SubComponents";
+import { useFilterContext } from "src/context/filterContext";
 
 export default function FilterSidebar() {
   const categoryArr = [
@@ -12,6 +13,10 @@ export default function FilterSidebar() {
     "Watch",
   ];
 
+  const {
+    filters: { searchValue },
+    updateFilterValue,
+  } = useFilterContext();
   const colors = ["#00FF00 ", "ffffff", "00FFFF "];
   return (
     <>
@@ -72,17 +77,18 @@ export default function FilterSidebar() {
           </svg>
           <span className="sr-only">Close menu</span>
         </button>
-        <div className="divide-y divide-gray-200 space-y-5">
+        <div className="space-y-5 divide-y divide-gray-200">
           <div>
             <input
               type="text"
-              id="search"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5   "
+              name={"searchValue"}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5   "
               placeholder="Search"
-              required
+              value={searchValue}
+              onChange={updateFilterValue}
             />
 
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Categories
             </h3>
             <div className="space-y-2">
@@ -91,66 +97,66 @@ export default function FilterSidebar() {
                   type="checkbox"
                   name="cat-1"
                   id="cat-1"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="cat-1"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Bedroom
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(15)</div>
+                <div className="ml-auto text-sm text-gray-600">(15)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="cat-2"
                   id="cat-2"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="cat-2"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Sofa
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(9)</div>
+                <div className="ml-auto text-sm text-gray-600">(9)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="cat-3"
                   id="cat-3"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="cat-3"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Office
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(21)</div>
+                <div className="ml-auto text-sm text-gray-600">(21)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="cat-4"
                   id="cat-4"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="cat-4"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Outdoor
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
+                <div className="ml-auto text-sm text-gray-600">(10)</div>
               </div>
             </div>
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Brands
             </h3>
             <div className="space-y-2">
@@ -159,89 +165,89 @@ export default function FilterSidebar() {
                   type="checkbox"
                   name="brand-1"
                   id="brand-1"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="brand-1"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Cooking Color
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(15)</div>
+                <div className="ml-auto text-sm text-gray-600">(15)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="brand-2"
                   id="brand-2"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="brand-2"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Magniflex
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(9)</div>
+                <div className="ml-auto text-sm text-gray-600">(9)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="brand-3"
                   id="brand-3"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="brand-3"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Ashley
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(21)</div>
+                <div className="ml-auto text-sm text-gray-600">(21)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="brand-4"
                   id="brand-4"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="brand-4"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   M&D
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
+                <div className="ml-auto text-sm text-gray-600">(10)</div>
               </div>
               <div className="flex items-center">
                 <input
                   type="checkbox"
                   name="brand-5"
                   id="brand-5"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
+                  className="rounded-sm cursor-pointer text-primary focus:ring-0"
                 />
                 <label
                   for="brand-5"
-                  className="text-gray-600 ml-3 cusror-pointer"
+                  className="ml-3 text-gray-600 cusror-pointer"
                 >
                   Olympic
                 </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
+                <div className="ml-auto text-sm text-gray-600">(10)</div>
               </div>
             </div>
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Price
             </h3>
-            <div className="mt-4 flex items-center">
+            <div className="flex items-center mt-4">
               <input
                 type="text"
                 name="min"
                 id="min"
-                className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
+                className="w-full px-3 py-1 text-gray-600 border-gray-300 rounded shadow-sm focus:border-primary focus:ring-0"
                 placeholder="min"
               />
               <span className="mx-3 text-gray-500">-</span>
@@ -249,14 +255,14 @@ export default function FilterSidebar() {
                 type="text"
                 name="max"
                 id="max"
-                className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
+                className="w-full px-3 py-1 text-gray-600 border-gray-300 rounded shadow-sm focus:border-primary focus:ring-0"
                 placeholder="max"
               />
             </div>
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               size
             </h3>
             <div className="flex items-center gap-2">
@@ -269,7 +275,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="size-xs"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
+                  className="flex items-center justify-center w-6 h-6 text-xs text-gray-600 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 >
                   XS
                 </label>
@@ -283,7 +289,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="size-sm"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
+                  className="flex items-center justify-center w-6 h-6 text-xs text-gray-600 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 >
                   S
                 </label>
@@ -297,7 +303,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="size-m"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
+                  className="flex items-center justify-center w-6 h-6 text-xs text-gray-600 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 >
                   M
                 </label>
@@ -311,7 +317,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="size-l"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
+                  className="flex items-center justify-center w-6 h-6 text-xs text-gray-600 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 >
                   L
                 </label>
@@ -325,7 +331,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="size-xl"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
+                  className="flex items-center justify-center w-6 h-6 text-xs text-gray-600 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 >
                   XL
                 </label>
@@ -334,7 +340,7 @@ export default function FilterSidebar() {
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Color
             </h3>
             <div className="flex items-center gap-2">
@@ -342,7 +348,7 @@ export default function FilterSidebar() {
                 <input type="radio" name="color" id="red" className="hidden" />
                 <label
                   for="red"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
+                  className="block w-6 h-6 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 ></label>
               </div>
               <div className="color-selector">
@@ -354,7 +360,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="black"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
+                  className="block w-6 h-6 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 ></label>
               </div>
               <div className="color-selector">
@@ -366,7 +372,7 @@ export default function FilterSidebar() {
                 />
                 <label
                   for="white"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
+                  className="block w-6 h-6 border border-gray-200 rounded-sm shadow-sm cursor-pointer"
                 ></label>
               </div>
             </div>
@@ -375,13 +381,13 @@ export default function FilterSidebar() {
         <div className="grid grid-cols-2 gap-4">
           <a
             href="#"
-            className="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 -700     -700"
+            className="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 -700"
           >
             Learn more
           </a>
           <a
             href="#"
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  -700 focus:outline-none -800"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 -700 focus:outline-none -800"
           >
             Get access{" "}
             <svg
@@ -401,17 +407,18 @@ export default function FilterSidebar() {
         </div>
       </div>
       {/* Sidebar */}
-      <div className="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden hidden md:block">
-        <div className="divide-y divide-gray-200 space-y-5">
+      <div className="hidden col-span-1 px-4 pb-6 overflow-hidden bg-white rounded shadow md:block">
+        <div className="space-y-5 divide-y divide-gray-200">
           <div className="mt-4">
             <input
               type="text"
-              id="search"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md mb-4 focus:ring-blue-500 focus:border-blue-500 block w-full p-2   "
+              name={"searchValue"}
+              className="block w-full p-2 mb-4 text-sm text-gray-900 border border-gray-300 rounded-md bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
               placeholder="Search"
-              required
+              value={searchValue}
+              onChange={updateFilterValue}
             />
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Categories
             </h3>
             <div className="space-y-2">
@@ -426,14 +433,14 @@ export default function FilterSidebar() {
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Company
             </h3>
             <div className="space-y-2">
               <select
                 name="sort"
                 id="sort"
-                className="w-44 text-base text-gray-600 py-2 px-4 border bg-gray-50  border-gray-300 rounded focus:ring-primary focus:border-primary-blue pr-1"
+                className="px-4 py-2 pr-1 text-base text-gray-600 border border-gray-300 rounded w-44 bg-gray-50 focus:ring-primary focus:border-primary-blue"
               >
                 <option value="">Default sorting</option>
                 <option value="price-low-to-high">Price low to high</option>
@@ -444,21 +451,21 @@ export default function FilterSidebar() {
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Price
             </h3>
-            <div className="mt-4  ">
+            <div className="mt-4 ">
               <input
                 id="medium-range"
                 type="range"
                 value="50"
-                class="w-full h-2 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                className="w-full h-2 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
               />
             </div>
           </div>
 
           <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
+            <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Color
             </h3>
             <div className="flex items-center gap-2">
