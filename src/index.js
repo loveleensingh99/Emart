@@ -5,14 +5,18 @@ import "./main.css";
 import "./styles/global.css";
 
 import { DataComponentContext } from "./context/productContext";
+
+import { FilterContextProvider } from "./context/filterContext";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <DataComponentContext>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <FilterContextProvider>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </FilterContextProvider>
   </DataComponentContext>
 );

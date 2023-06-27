@@ -63,20 +63,3 @@ export const SelectColor = ({ colors, onColorUpdate }) => {
     </>
   );
 };
-
-export const SelectColorS = ({ price, colors }) => (
-  <>
-    <h1>
-      Hello Hello{price}
-      {colors.map((colorCode) => (
-        <button
-          className="inline-flex items-center justify-center p-1 border border-gray-300 rounded-full"
-          key={colorCode}
-        >
-          {colorCode}
-          {/* <div className={`w-6 h-6 rounded-full bg-[${colorCode}`}></div> */}
-        </button>
-      ))}
-    </h1>
-  </>
-);

@@ -1,6 +1,18 @@
+import { Slider } from "@material-tailwind/react";
 import React from "react";
+import { SelectColor } from "./SubComponents";
 
 export default function FilterSidebar() {
+  const categoryArr = [
+    "All",
+    "Mobile",
+    "Laptop",
+    "Computer",
+    "Accessories",
+    "Watch",
+  ];
+
+  const colors = ["#00FF00 ", "ffffff", "00FFFF "];
   return (
     <>
       <div className="text-center md:hidden">
@@ -14,7 +26,6 @@ export default function FilterSidebar() {
           <ion-icon name="grid-outline"></ion-icon>
         </button>
       </div>
-
       <div
         id="drawer-example"
         className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 "
@@ -389,7 +400,7 @@ export default function FilterSidebar() {
           </a>
         </div>
       </div>
-
+      {/* Sidebar */}
       <div className="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden hidden md:block">
         <div className="divide-y divide-gray-200 space-y-5">
           <div className="mt-4">
@@ -404,149 +415,31 @@ export default function FilterSidebar() {
               Categories
             </h3>
             <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="cat-1"
-                  id="cat-1"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="cat-1"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Bedroom
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(15)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="cat-2"
-                  id="cat-2"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="cat-2"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Sofa
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(9)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="cat-3"
-                  id="cat-3"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="cat-3"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Office
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(21)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="cat-4"
-                  id="cat-4"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="cat-4"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Outdoor
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
-              </div>
+              {categoryArr.map((item) => (
+                <>
+                  <button className="block hover:text-primary-blue">
+                    {item}
+                  </button>
+                </>
+              ))}
             </div>
           </div>
 
           <div className="pt-4">
             <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
-              Brands
+              Company
             </h3>
             <div className="space-y-2">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="brand-1"
-                  id="brand-1"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="brand-1"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Cooking Color
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(15)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="brand-2"
-                  id="brand-2"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="brand-2"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Magniflex
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(9)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="brand-3"
-                  id="brand-3"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="brand-3"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Ashley
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(21)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="brand-4"
-                  id="brand-4"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="brand-4"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  M&D
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  name="brand-5"
-                  id="brand-5"
-                  className="text-primary focus:ring-0 rounded-sm cursor-pointer"
-                />
-                <label
-                  for="brand-5"
-                  className="text-gray-600 ml-3 cusror-pointer"
-                >
-                  Olympic
-                </label>
-                <div className="ml-auto text-gray-600 text-sm">(10)</div>
-              </div>
+              <select
+                name="sort"
+                id="sort"
+                className="w-44 text-base text-gray-600 py-2 px-4 border bg-gray-50  border-gray-300 rounded focus:ring-primary focus:border-primary-blue pr-1"
+              >
+                <option value="">Default sorting</option>
+                <option value="price-low-to-high">Price low to high</option>
+                <option value="price-high-to-low">Price high to low</option>
+                <option value="latest">Latest product</option>
+              </select>
             </div>
           </div>
 
@@ -554,100 +447,13 @@ export default function FilterSidebar() {
             <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
               Price
             </h3>
-            <div className="mt-4 flex items-center">
+            <div className="mt-4  ">
               <input
-                type="text"
-                name="min"
-                id="min"
-                className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
-                placeholder="min"
+                id="medium-range"
+                type="range"
+                value="50"
+                class="w-full h-2 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
               />
-              <span className="mx-3 text-gray-500">-</span>
-              <input
-                type="text"
-                name="max"
-                id="max"
-                className="w-full border-gray-300 focus:border-primary rounded focus:ring-0 px-3 py-1 text-gray-600 shadow-sm"
-                placeholder="max"
-              />
-            </div>
-          </div>
-
-          <div className="pt-4">
-            <h3 className="text-xl text-gray-800 mb-3 uppercase font-medium">
-              size
-            </h3>
-            <div className="flex items-center gap-2">
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  id="size-xs"
-                  className="hidden"
-                />
-                <label
-                  for="size-xs"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  XS
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  id="size-sm"
-                  className="hidden"
-                />
-                <label
-                  for="size-sm"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  S
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  id="size-m"
-                  className="hidden"
-                />
-                <label
-                  for="size-m"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  M
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  id="size-l"
-                  className="hidden"
-                />
-                <label
-                  for="size-l"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  L
-                </label>
-              </div>
-              <div className="size-selector">
-                <input
-                  type="radio"
-                  name="size"
-                  id="size-xl"
-                  className="hidden"
-                />
-                <label
-                  for="size-xl"
-                  className="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600"
-                >
-                  XL
-                </label>
-              </div>
             </div>
           </div>
 
@@ -656,38 +462,13 @@ export default function FilterSidebar() {
               Color
             </h3>
             <div className="flex items-center gap-2">
-              <div className="color-selector">
-                <input type="radio" name="color" id="red" className="hidden" />
-                <label
-                  for="red"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                ></label>
-              </div>
-              <div className="color-selector">
-                <input
-                  type="radio"
-                  name="color"
-                  id="black"
-                  className="hidden"
-                />
-                <label
-                  for="black"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                ></label>
-              </div>
-              <div className="color-selector">
-                <input
-                  type="radio"
-                  name="color"
-                  id="white"
-                  className="hidden"
-                />
-                <label
-                  for="white"
-                  className="border border-gray-200 rounded-sm h-6 w-6  cursor-pointer shadow-sm block"
-                ></label>
-              </div>
+              <SelectColor colors={colors} />
             </div>
+          </div>
+          <div className="pt-4">
+            <button className="px-4 py-2 bg-gray-300 rounded-sm">
+              CLEAR FILTERS{" "}
+            </button>
           </div>
         </div>
       </div>
