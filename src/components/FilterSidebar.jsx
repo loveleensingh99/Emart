@@ -4,19 +4,26 @@ import { SelectColor } from "./SubComponents";
 import { useFilterContext } from "src/context/filterContext";
 
 export default function FilterSidebar() {
-  const categoryArr = [
-    "All",
-    "Mobile",
-    "Laptop",
-    "Computer",
-    "Accessories",
-    "Watch",
-  ];
-
   const {
-    filters: { searchValue },
+    filters: { searchValue, category, company },
     updateFilterValue,
+    allProducts,
   } = useFilterContext();
+
+  //To get the unique Data
+  const getUniqueData = (data, title) => {
+    let newValue = data.map((item) => {
+      return item[title];
+    });
+    newValue = Array.from(new Set(newValue));
+    newValue.unshift("All");
+
+    return newValue;
+  };
+
+  //We need unique data for category,colors.
+  const categoryData = getUniqueData(allProducts, "category");
+  const companyData = getUniqueData(allProducts, "company");
   const colors = ["#00FF00 ", "ffffff", "00FFFF "];
   return (
     <>
@@ -31,7 +38,9 @@ export default function FilterSidebar() {
           <ion-icon name="grid-outline"></ion-icon>
         </button>
       </div>
-      <div
+
+      {/* MOBILE SIDEBAR currently not working */}
+      {/* <div
         id="drawer-example"
         className="fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white w-80 "
         tabindex="-1"
@@ -405,7 +414,7 @@ export default function FilterSidebar() {
             </svg>
           </a>
         </div>
-      </div>
+      </div> */}
       {/* Sidebar */}
       <div className="hidden col-span-1 px-4 pb-6 overflow-hidden bg-white rounded shadow md:block">
         <div className="space-y-5 divide-y divide-gray-200">
@@ -422,10 +431,17 @@ export default function FilterSidebar() {
               Categories
             </h3>
             <div className="space-y-2">
-              {categoryArr.map((item) => (
+              {categoryData.map((item) => (
                 <>
-                  <button className="block hover:text-primary-blue">
-                    {item}
+                  <button
+                    name="category"
+                    className={`block hover:text-primary-blue ${
+                      category === item ? "text-primary-blue" : ""
+                    }`}
+                    value={item}
+                    onClick={updateFilterValue}
+                  >
+                    {item.charAt(0).toUpperCase().concat(item.slice(1))}
                   </button>
                 </>
               ))}
@@ -438,14 +454,14 @@ export default function FilterSidebar() {
             </h3>
             <div className="space-y-2">
               <select
-                name="sort"
-                id="sort"
+                name="company"
+                id="company"
                 className="px-4 py-2 pr-1 text-base text-gray-600 border border-gray-300 rounded w-44 bg-gray-50 focus:ring-primary focus:border-primary-blue"
+                onChange={updateFilterValue}
               >
-                <option value="">Default sorting</option>
-                <option value="price-low-to-high">Price low to high</option>
-                <option value="price-high-to-low">Price high to low</option>
-                <option value="latest">Latest product</option>
+                {companyData.map((curEle) => (
+                  <option value={curEle}>{curEle}</option>
+                ))}
               </select>
             </div>
           </div>

@@ -11,10 +11,10 @@ const initialState = {
   sortingValue: "lowest",
   filters: {
     searchValue: "",
+    category: "",
+    company: "",
   },
 };
-
-//what is useState
 
 export const FilterContextProvider = ({ children }) => {
   const { products } = useProductContext();
@@ -43,13 +43,13 @@ export const FilterContextProvider = ({ children }) => {
   // }, [state.sortingValue]);
 
   useEffect(() => {
+    console.log("Category=", state.category);
     dispatch({ type: "FILTER_PRODUCTS" });
   }, [products, state.filters]);
 
   const updateFilterValue = (event) => {
     let name = event.target.name;
     let value = event.target.value;
-    console.log("inside updateFilterValue");
     return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } });
   };
 

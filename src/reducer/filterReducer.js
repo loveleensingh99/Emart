@@ -64,10 +64,22 @@ export const filterReducer = (state, action) => {
       let { allProducts } = state;
       let tempFilterProducts = [...allProducts];
 
-      const { searchValue } = state.filters;
+      const { searchValue, category, company } = state.filters;
       if (searchValue) {
         tempFilterProducts = tempFilterProducts.filter((curEle) => {
           return curEle.name.toLowerCase().includes(searchValue.toLowerCase());
+        });
+      }
+
+      if (category !== "All") {
+        tempFilterProducts = tempFilterProducts.filter((curEle) => {
+          return curEle.category === category;
+        });
+      }
+
+      if (company !== "All") {
+        tempFilterProducts = tempFilterProducts.filter((curEle) => {
+          return curEle.company === company;
         });
       }
       return {
