@@ -8,15 +8,18 @@ import { DataComponentContext } from "./context/productContext";
 
 import { FilterContextProvider } from "./context/filterContext";
 import App from "./App";
+import { CartContextProvider } from "./context/cartContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <DataComponentContext>
     <FilterContextProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <CartContextProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </CartContextProvider>
     </FilterContextProvider>
   </DataComponentContext>
 );

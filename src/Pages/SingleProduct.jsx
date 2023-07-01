@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FormatPrice } from "src/Helper/ForamtPrice";
 import Loading from "src/components/Loading";
 
@@ -8,6 +8,7 @@ import PageNavigation from "src/components/PageNavigation";
 import ProductImages from "src/components/ProductImages";
 import QuantityButton from "src/components/QuantityButton";
 import { SelectColor, SelectColorS, Star } from "src/components/SubComponents";
+import { useCartContect, useCartContext } from "src/context/cartContext";
 import { useProductContext } from "src/context/productContext";
 
 const API = "https://api.pujakaitem.com/api/products";
@@ -15,6 +16,7 @@ const API = "https://api.pujakaitem.com/api/products";
 export default function SingleProduct() {
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
+  const { addToCart } = useCartContext();
   const { id } = useParams();
   const {
     id: alias,
@@ -55,16 +57,18 @@ export default function SingleProduct() {
       <div className="px-2 xl:px-8 md:px-4">
         <PageNavigation title={name} />
 
-        <section className="pt-12 pb-24 bg-blueGray-100 rounded-b-10xl overflow-hidden">
+        <section className="pt-12 pb-24 overflow-hidden bg-blueGray-100 rounded-b-10xl">
           <div className="container px-4 mx-auto">
             <div className="flex flex-wrap -mx-4">
               <div className="w-full px-4"></div>
               <ProductImages images={image} />
-              <div className="w-full lg:w-1/2 px-4">
+              <div className="w-full px-4 lg:w-1/2">
                 <div className="max-w-md mb-4">
-                  <span className="text-xs text-gray-400 tracking-wider">{id}</span>
-                  <h2 className="mt-5 mb-3 text-lg md:text-2xl lg:text-3xl font-heading font-medium">
-                    Apple iPhone 12 Pro (128GB) - Silver
+                  <span className="text-xs tracking-wider text-gray-400">
+                    {id}
+                  </span>
+                  <h2 className="mt-5 mb-3 text-lg font-medium md:text-2xl lg:text-3xl font-heading">
+                    {name}
                   </h2>
                   <p className="flex items-center mb-2">
                     <span className="mr-2 text-sm font-medium">MRP:</span>
@@ -76,20 +80,20 @@ export default function SingleProduct() {
                     </span>
                   </p>
                   <p className="flex items-center mb-4">
-                    <span className="mr-2 text-sm text-blue-500 font-medium">
+                    <span className="mr-2 text-sm font-medium text-blue-500">
                       Deal of the day:
                     </span>
-                    <span className="text-2xl text-blue-500 font-medium">
+                    <span className="text-2xl font-medium text-blue-500">
                       <FormatPrice price={price} />{" "}
                     </span>
                   </p>
                 </div>
-                <div className="flex mb-4 items-center">
+                <div className="flex items-center mb-4">
                   <div className="flex pr-2 space-x-1">
                     <Star stars={stars} reviews={reviews} />
                   </div>
 
-                  <span className="text-md text-gray-400">{` Customer Reviews (${reviews})`}</span>
+                  <span className="text-gray-400 text-md">{` Customer Reviews (${reviews})`}</span>
                 </div>
                 <div className="mb-4">
                   {/* <SelectColorS price={price} colors={colors} /> */}
@@ -108,28 +112,35 @@ export default function SingleProduct() {
                 </div>
 
                 <div className="mb-2 space-y-1">
-                  <h4 className="  font-heading font-medium">
+                  <h4 className="font-medium font-heading">
                     <span className="text-gray-400">Available:</span>
                     <span>{stock > 0 ? " In Stock" : " Not Available"}</span>
                   </h4>
 
-                  <h4 className=" font-heading font-medium">
+                  <h4 className="font-medium font-heading">
                     <span className="text-gray-400">Brand:</span>
-                    <span className=""> {company}</span>
+                    <span clas sName="">
+                      {" "}
+                      {company}
+                    </span>
                   </h4>
                 </div>
-                <div className="flex flex-wrap -mx-2 mb-12">
-                  <div className="w-full md:w-2/3 px-2 mb-2 md:mb-0">
-                    <a
-                      className="block py-1 px-2 leading-8 font-heading font-medium tracking-tighter text-xl text-white text-center bg-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
+                <div className="flex flex-wrap mb-12 -mx-2">
+                  <div className="w-full px-2 mb-2 md:w-2/3 md:mb-0">
+                    <NavLink
+                      to="/cart"
+                      onClick={() =>
+                        addToCart(id, color, quantity, singleProduct)
+                      }
+                      className="block px-2 py-1 text-xl font-medium leading-8 tracking-tighter text-center text-white bg-blue-500 font-heading focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 hover:bg-blue-600 rounded-xl"
                       href="#"
                     >
                       Add to bag
-                    </a>
+                    </NavLink>
                   </div>
-                  <div className="w-full md:w-1/3 px-2">
+                  <div className="w-full px-2 md:w-1/3">
                     <a
-                      className="flex w-full py-1 px-2 items-center justify-center leading-8 font-heading font-medium tracking-tighter text-xl text-center bg-white focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50 hover:bg-opacity-60 rounded-xl"
+                      className="flex items-center justify-center w-full px-2 py-1 text-xl font-medium leading-8 tracking-tighter text-center bg-white font-heading focus:ring-2 focus:ring-gray-200 focus:ring-opacity-50 hover:bg-opacity-60 rounded-xl"
                       href="#"
                     >
                       <span className="mr-2">Wishlist</span>
@@ -150,7 +161,7 @@ export default function SingleProduct() {
                       </svg>
                     </a>
                   </div>
-                  <p className="text-lg  mt-2">
+                  <p className="mt-2 text-lg">
                     <span className="text-gray-400">Description: </span>
                     {description}
                   </p>

@@ -47,8 +47,6 @@ export const FilterContextProvider = ({ children }) => {
   // }, [state.sortingValue]);
 
   useEffect(() => {
-    
-
     dispatch({ type: "FILTER_PRODUCTS" });
   }, [products, state.filters]);
 
@@ -59,7 +57,6 @@ export const FilterContextProvider = ({ children }) => {
   };
   const handleClearFilter = () => {
     return dispatch({ type: "CLEAR_FILTER_PRODUCTS" });
-
   };
 
   useEffect(() => {

@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-export default function QuantityButton({ stock, updateQuantity }) {
-  const [amount, setAmount] = useState(0);
+export default function QuantityButton({
+  stock,
+  updateQuantity,
+  quantityInitial = 0,
+}) {
+  const [amount, setAmount] = useState(quantityInitial);
   console.log("Amount", amount);
   console.log("stock", stock);
 
@@ -19,9 +23,9 @@ export default function QuantityButton({ stock, updateQuantity }) {
   return (
     <>
       <div className="mb-3">
-        <h4 className="mb-3 font-heading font-medium">Quantity:</h4>
-        <div className="custom-number-input h-10 w-32">
-          <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 ">
+        <h4 className="mb-3 font-medium font-heading">Quantity:</h4>
+        <div className="w-32 h-10 custom-number-input">
+          <div className="relative flex flex-row w-full h-10 mt-1 bg-transparent rounded-lg ">
             <button
               data-action="decrement"
               className={`  text-gray-600 hover:text-gray-700 border hover:bg-blue-100 hover:border-blue-500  h-full w-20 rounded-l cursor-pointer outline-none`}
@@ -31,14 +35,14 @@ export default function QuantityButton({ stock, updateQuantity }) {
             </button>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-full focus:ring-blue-500  font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none border   "
+              className="flex items-center w-full font-semibold text-center text-gray-700 border outline-none focus:outline-none focus:ring-blue-500 text-md hover:text-black focus:text-black md:text-basecursor-default "
               name="custom-input-number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
             />
             <button
               data-action="increment"
-              className=" text-gray-600 hover:text-gray-700 border hover:bg-blue-100  hover:border-blue-500   h-full w-20 rounded-r cursor-pointer"
+              className="w-20 h-full text-gray-600 border rounded-r cursor-pointer hover:text-gray-700 hover:bg-blue-100 hover:border-blue-500"
               onClick={() => setIncrease()}
             >
               <span className="m-auto text-2xl font-thin">+</span>
