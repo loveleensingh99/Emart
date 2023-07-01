@@ -4,7 +4,7 @@ import QuantityButton from "src/components/QuantityButton";
 import { useCartContext } from "src/context/cartContext";
 
 export default function Cart() {
-  const { cart } = useCartContext();
+  const { cart, removeItemFromCart } = useCartContext();
   const [quantity, setQuantity] = useState(0);
 
   const handleStateQuantity = (quant) => setQuantity(quant);
@@ -15,7 +15,9 @@ export default function Cart() {
         <div className="w-3/4 px-10 py-10 bg-white">
           <div className="flex justify-between pb-8 border-b">
             <h1 className="text-2xl font-semibold">Shopping Cart</h1>
-            <h2 className="text-2xl font-semibold">3 Items</h2>
+            <h2 className="text-2xl font-semibold">
+              {cart.length ? cart.length : "No "} Items
+            </h2>
           </div>
           <div className="flex mt-10 mb-5">
             <h3 className="w-2/5 text-base font-semibold text-gray-600 uppercase">
@@ -32,10 +34,13 @@ export default function Cart() {
             </h3>
           </div>
 
-          {cart.map((item) => {
+          {cart.map((item, index) => {
             return (
               <>
-                <div className="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100">
+                <div
+                  className="flex items-center px-6 py-5 -mx-8 hover:bg-gray-100"
+                  key={index}
+                >
                   <div className="flex w-2/5">
                     <div className="flex items-center w-20">
                       <img
@@ -63,7 +68,10 @@ export default function Cart() {
                         </div>
                       </span>
 
-                      <button className="text-xs font-semibold text-gray-500 w-fit hover:text-primary-blue">
+                      <button
+                        className="text-xs font-semibold text-gray-500 w-fit hover:text-primary-blue"
+                        onClick={() => removeItemFromCart(item.id)}
+                      >
                         Remove
                       </button>
                     </div>
@@ -79,7 +87,7 @@ export default function Cart() {
                     {<FormatPrice price={item.price} />}
                   </span>
                   <span className="w-1/5 text-sm font-semibold text-center">
-                    {<FormatPrice price={item.price * quantity} />}
+                    {<FormatPrice price={item.price * item.quantity} />}
                   </span>
                 </div>
               </>

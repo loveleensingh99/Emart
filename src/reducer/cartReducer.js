@@ -14,10 +14,17 @@ export default function cartReducer(state, action) {
       price: singleProduct.price,
       stock: singleProduct.stock,
     };
-    console.log(
-      "🚀 ~ file: cartReducer.js:20 ~ cartReducer ~ cartProduct:",
-      cartProduct
-    );
+
     return { ...state, cart: [...state.cart, cartProduct] };
+  }
+
+  if (action.type === "REMOVEITEM") {
+    let id = action.payload;
+    let updatedCart = state.cart.filter((item) => item.id !== id);
+
+    return {
+      ...state,
+      cart: updatedCart,
+    };
   }
 }

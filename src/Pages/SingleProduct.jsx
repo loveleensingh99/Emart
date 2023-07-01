@@ -34,7 +34,7 @@ export default function SingleProduct() {
   } = singleProduct;
 
   const [color, setColor] = useState(colors[0]);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const handleStateColor = (color) => setColor(color);
 
