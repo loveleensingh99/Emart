@@ -11,8 +11,12 @@ const initialState = {
   sortingValue: "lowest",
   filters: {
     searchValue: "",
-    category: "",
-    company: "",
+    category: "All",
+    company: "All",
+    color: "All",
+    price: 0,
+    maxPrice: 0,
+    minPrice: 0,
   },
 };
 
@@ -43,7 +47,8 @@ export const FilterContextProvider = ({ children }) => {
   // }, [state.sortingValue]);
 
   useEffect(() => {
-    console.log("Category=", state.category);
+    
+
     dispatch({ type: "FILTER_PRODUCTS" });
   }, [products, state.filters]);
 
@@ -51,6 +56,10 @@ export const FilterContextProvider = ({ children }) => {
     let name = event.target.name;
     let value = event.target.value;
     return dispatch({ type: "UPDATE_FILTER_VALUE", payload: { name, value } });
+  };
+  const handleClearFilter = () => {
+    return dispatch({ type: "CLEAR_FILTER_PRODUCTS" });
+
   };
 
   useEffect(() => {
@@ -65,6 +74,7 @@ export const FilterContextProvider = ({ children }) => {
         setListView,
         handleSortChange,
         updateFilterValue,
+        handleClearFilter,
       }}
     >
       {children}

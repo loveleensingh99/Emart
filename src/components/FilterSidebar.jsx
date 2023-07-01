@@ -2,12 +2,22 @@ import { Slider } from "@material-tailwind/react";
 import React from "react";
 import { SelectColor } from "./SubComponents";
 import { useFilterContext } from "src/context/filterContext";
+import { FormatPrice } from "src/Helper/ForamtPrice";
 
 export default function FilterSidebar() {
   const {
-    filters: { searchValue, category, company },
+    filters: {
+      searchValue,
+      category,
+      company,
+      color,
+      price,
+      maxPrice,
+      minPrice,
+    },
     updateFilterValue,
     allProducts,
+    handleClearFilter,
   } = useFilterContext();
 
   //To get the unique Data
@@ -24,7 +34,9 @@ export default function FilterSidebar() {
   //We need unique data for category,colors.
   const categoryData = getUniqueData(allProducts, "category");
   const companyData = getUniqueData(allProducts, "company");
-  const colors = ["#00FF00 ", "ffffff", "00FFFF "];
+  const colorsfetchedData = getUniqueData(allProducts, "colors");
+  const colorsData = Array.from(new Set(colorsfetchedData.flat()));
+
   return (
     <>
       <div className="text-center md:hidden">
@@ -460,7 +472,12 @@ export default function FilterSidebar() {
                 onChange={updateFilterValue}
               >
                 {companyData.map((curEle) => (
-                  <option value={curEle}>{curEle}</option>
+                  <option
+                    value={curEle}
+                    selected={company === curEle ? true : false}
+                  >
+                    {curEle}
+                  </option>
                 ))}
               </select>
             </div>
@@ -470,12 +487,21 @@ export default function FilterSidebar() {
             <h3 className="mb-3 text-xl font-medium text-gray-800 uppercase">
               Price
             </h3>
+
             <div className="mt-4 ">
+              <h3 className="mb-1 text-lg font-medium text-gray-600 ">
+                <FormatPrice price={price} />
+              </h3>
               <input
                 id="medium-range"
                 type="range"
-                value="50"
+                name="price"
+                step="1000"
+                value={price}
+                min={minPrice}
+                max={maxPrice}
                 className="w-full h-2 mb-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                onChange={updateFilterValue}
               />
             </div>
           </div>
@@ -485,11 +511,68 @@ export default function FilterSidebar() {
               Color
             </h3>
             <div className="flex items-center gap-2">
-              <SelectColor colors={colors} />
+              {/* {colorsData.map((item) => (
+                <>
+                  <button
+                    name="color"
+                    className={`inline-flex items-center justify-center p-1 rounded-full  ${
+                      color === item ? "border border-gray-300" : ""
+                    }`}
+                    value={item}
+                    onClick={updateFilterValue}
+                  >
+                    <div
+                      className={`w-6 h-6 rounded-full  `}
+                      style={{ backgroundColor: item }}
+                    ></div>
+                  </button>
+                </>
+              ))} */}
+
+              {colorsData.map((item, index) => (
+                <>
+                  {item === "All" ? (
+                    <div
+                      className={`inline-flex items-center justify-center p-1 rounded-full  ${
+                        color === item ? "border border-gray-300" : ""
+                      }`}
+                      key={index}
+                    >
+                      <button
+                        name="color"
+                        value={item}
+                        onClick={updateFilterValue}
+                        // style={{ backgroundColor: item }}
+                        className={`w-6 h-6 rounded-full border `}
+                      >
+                        All
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      className={`inline-flex items-center justify-center p-1 rounded-full  ${
+                        color === item ? "border border-gray-300" : ""
+                      }`}
+                      key={index}
+                    >
+                      <button
+                        name="color"
+                        value={item}
+                        onClick={updateFilterValue}
+                        style={{ backgroundColor: item }}
+                        className={`w-6 h-6 rounded-full border `}
+                      ></button>
+                    </div>
+                  )}
+                </>
+              ))}
             </div>
           </div>
           <div className="pt-4">
-            <button className="px-4 py-2 bg-gray-300 rounded-sm">
+            <button
+              className="px-4 py-2 bg-gray-300 rounded-sm"
+              onClick={handleClearFilter}
+            >
               CLEAR FILTERS{" "}
             </button>
           </div>

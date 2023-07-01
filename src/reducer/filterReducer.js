@@ -1,10 +1,31 @@
+import { FormatPrice } from "src/Helper/ForamtPrice";
+
 export const filterReducer = (state, action) => {
   switch (action.type) {
     case "LOAD_FILTER_PRODUCTS":
+      let priceArr = action.payload.map((item) => item.price);
+      console.log(
+        "🚀 ~ file: filterReducer.js:7 ~ filterReducer ~ priceArr:",
+        priceArr
+      );
+
+      let sortedPriceArr = priceArr.sort((a, b) => a - b);
+      console.log(
+        "🚀 ~ file: filterReducer.js:10 ~ filterReducer ~ sortedPriceArr:",
+        sortedPriceArr
+      );
+
+      let maxPrice = sortedPriceArr[sortedPriceArr.length - 1];
+      console.log(
+        "🚀 ~ file: filterReducer.js:13 ~ filterReducer ~ maxPrice:",
+        maxPrice
+      );
+
       return {
         ...state,
         filterProducts: [...action.payload],
         allProducts: [...action.payload],
+        filters: { ...state.filters, maxPrice: maxPrice, price: maxPrice },
       };
     case "SET_GRID_VIEW":
       return {
@@ -64,7 +85,7 @@ export const filterReducer = (state, action) => {
       let { allProducts } = state;
       let tempFilterProducts = [...allProducts];
 
-      const { searchValue, category, company } = state.filters;
+      const { searchValue, category, company, color, price } = state.filters;
       if (searchValue) {
         tempFilterProducts = tempFilterProducts.filter((curEle) => {
           return curEle.name.toLowerCase().includes(searchValue.toLowerCase());
@@ -82,11 +103,46 @@ export const filterReducer = (state, action) => {
           return curEle.company === company;
         });
       }
+
+      if (color !== "All") {
+        tempFilterProducts = tempFilterProducts.filter((curEle) => {
+          return curEle.colors.includes(color);
+        });
+      }
+      if (price === 0) {
+        console.log("price =0");
+        tempFilterProducts = tempFilterProducts.filter(
+          (curEle) => curEle.price == price
+        );
+      } else {
+        console.log("in else of price");
+
+        tempFilterProducts = tempFilterProducts.filter((curEle) => {
+          return curEle.price <= price;
+        });
+      }
+
       return {
         ...state,
         filterProducts: tempFilterProducts,
       };
     }
+    case "CLEAR_FILTER_PRODUCTS": {
+      console.log("IN crear filter products");
+      return {
+        ...state,
+        filters: {
+          searchValue: "",
+          category: "All",
+          company: "All",
+          color: "All",
+          price: state.filters.maxPrice,
+          maxPrice: state.filters.maxPrice,
+          minPrice: 0,
+        },
+      };
+    }
+
     default:
       return state;
   }
