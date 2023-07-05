@@ -36,6 +36,7 @@ export const Star = ({ stars, reviews }) => {
 
 export const SelectColor = ({ colors, onColorUpdate }) => {
   const [selectedcolor, setSelectedcolor] = useState(colors[0]);
+  console.log("🚀selectedColor subcomp", selectedcolor)
 
   const handleColorSelect = (colorCode) => {
     setSelectedcolor(colorCode);

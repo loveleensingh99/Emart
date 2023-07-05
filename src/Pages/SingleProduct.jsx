@@ -18,6 +18,10 @@ export default function SingleProduct() {
     useProductContext();
   const { addToCart } = useCartContext();
   const { id } = useParams();
+
+  useEffect(() => {
+    getSingleProduct(`${API}?id=${id}`);
+  }, []);
   const {
     id: alias,
     name,
@@ -32,22 +36,25 @@ export default function SingleProduct() {
     reviews,
     colors = [],
   } = singleProduct;
-
-  const [color, setColor] = useState(colors[0]);
+  const [color, setColor] = useState(
+    colors && colors.length > 0 ? colors[0] : null
+  );
   const [quantity, setQuantity] = useState(1);
 
   const handleStateColor = (color) => setColor(color);
 
   const handleStateQuantity = (quant) => setQuantity(quant);
 
-  console.log("stocle singleProduct", stock);
+  console.log("stock singleProduct", stock);
   useEffect(() => {
     console.log("Quantity Select From Parent Component=", quantity);
   }, [quantity]);
 
   useEffect(() => {
-    getSingleProduct(`${API}?id=${id}`);
-  }, []);
+    if (colors && colors.length > 0) {
+      setColor(colors[0]);
+    }
+  }, [colors]);
 
   if (isSingleLoading) {
     return <div className="mx-auto w-ful">Loading...</div>;
