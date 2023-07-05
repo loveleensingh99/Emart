@@ -3,10 +3,10 @@ import React from "react";
 export default function Footer() {
   return (
     <>
-      <footer className=" text-center  bg-gray-900 text-white lg:text-left px-4">
+      <footer className="px-4 text-center text-white bg-gray-900  lg:text-left">
         <div className="px-6 pt-6">
           <form action="">
-            <div className="gird-cols-1 grid items-center justify-center gap-4 md:grid-cols-3">
+            <div className="grid items-center justify-center gap-4 gird-cols-1 md:grid-cols-3">
               <div className="md:mb-6 md:ml-auto">
                 <p className="text-secondary-800 dark:text-secondary-200">
                   <strong>Sign up for our newsletter</strong>
@@ -15,7 +15,7 @@ export default function Footer() {
 
               <div className="relative md:mb-6" data-te-input-wrapper-init>
                 <input
-                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-gray-800 px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  className="w-full h-full px-3 py-3 font-sans text-sm font-normal transition-all bg-gray-800 border rounded-md peer border-blue-gray-200 text-blue-gray-700 outline outline-0 placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   name="email"
                 />
@@ -38,8 +38,8 @@ export default function Footer() {
           </form>
         </div>
 
-        <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-neutral-500 lg:justify-between">
-          <div className="mr-12 hidden lg:block">
+        <div className="flex items-center justify-center p-6 border-b-2 border-neutral-200 dark:border-neutral-500 lg:justify-between">
+          <div className="hidden mr-12 lg:block">
             <span>Get connected with us on social networks:</span>
           </div>
           <div className="flex justify-center">
@@ -49,7 +49,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -62,7 +62,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -75,7 +75,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="w-5 h-5"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -92,7 +92,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -105,7 +105,7 @@ export default function Footer() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -115,7 +115,7 @@ export default function Footer() {
             <a href="#!" className="text-neutral-600 dark:text-neutral-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="w-4 h-4"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -125,15 +125,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mx-6 py-10 text-center md:text-left">
-          <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="py-10 mx-6 text-center md:text-left">
+          <div className="grid gap-8 grid-1 md:grid-cols-2 lg:grid-cols-4">
             <div className="">
-              <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
+              <h6 className="flex items-center justify-center mb-4 font-semibold uppercase md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="mr-3 h-4 w-4"
+                  className="w-4 h-4 mr-3"
                 >
                   <path d="M12.378 1.602a.75.75 0 00-.756 0L3 6.632l9 5.25 9-5.25-8.622-5.03zM21.75 7.93l-9 5.25v9l8.628-5.032a.75.75 0 00.372-.648V7.93zM11.25 22.18v-9l-9-5.25v8.57a.75.75 0 00.372.648l8.628 5.033z" />
                 </svg>
@@ -146,7 +146,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="">
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
                 Products
               </h6>
               <p className="mb-4">
@@ -171,7 +171,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="">
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
                 Useful links
               </h6>
               <p className="mb-4">
@@ -196,39 +196,39 @@ export default function Footer() {
               </p>
             </div>
             <div>
-              <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
+              <h6 className="flex justify-center mb-4 font-semibold uppercase md:justify-start">
                 Contact
               </h6>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
+              <p className="flex items-center justify-center mb-4 md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="mr-3 h-5 w-5"
+                  className="w-5 h-5 mr-3"
                 >
                   <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
                   <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                 </svg>
                 New York, NY 10012, US
               </p>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
+              <p className="flex items-center justify-center mb-4 md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="mr-3 h-5 w-5"
+                  className="w-5 h-5 mr-3"
                 >
                   <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                   <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                 </svg>
                 info@example.com
               </p>
-              <p className="mb-4 flex items-center justify-center md:justify-start">
+              <p className="flex items-center justify-center mb-4 md:justify-start">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="mr-3 h-5 w-5"
+                  className="w-5 h-5 mr-3"
                 >
                   <path
                     fillRule="evenodd"
@@ -243,7 +243,7 @@ export default function Footer() {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="mr-3 h-5 w-5"
+                  className="w-5 h-5 mr-3"
                 >
                   <path
                     fillRule="evenodd"
@@ -257,7 +257,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="bg-neutral-200 p-6 text-center dark:bg-neutral-700">
+        <div className="p-6 text-center bg-neutral-200 dark:bg-neutral-700">
           <span>© 2023 Copyright:</span>
           <a
             className="font-semibold text-neutral-600 dark:text-neutral-400"

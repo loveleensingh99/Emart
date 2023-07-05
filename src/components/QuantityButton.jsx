@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function QuantityButton({
   stock,
   updateQuantity,
-  quantityInitial = 0,
+  quantityInitial = 1,
 }) {
   const [amount, setAmount] = useState(quantityInitial);
   console.log("Amount", amount);
