@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import { FormatPrice } from "src/Helper/ForamtPrice";
-import QuantityButton from "src/components/QuantityButton";
+import CartQuantityToggle from "src/components/CartQuantityToggle";
 import { useCartContext } from "src/context/cartContext";
 
 export default function Cart() {
-  const { cart, removeItemFromCart } = useCartContext();
-  const [quantity, setQuantity] = useState(0);
-
-  const handleStateQuantity = (quant) => setQuantity(quant);
+  const {
+    cart,
+    removeItemFromCart,
+    setIncrement,
+    setDecrement,
+    totalAmount,
+    totalItem,
+    shippingFee,
+  } = useCartContext();
 
   return (
     <div className="container mx-auto mt-10">
@@ -77,10 +83,10 @@ export default function Cart() {
                     </div>
                   </div>
                   <div className="flex justify-center w-1/5">
-                    <QuantityButton
-                      updateQuantity={handleStateQuantity}
-                      stock={item.stock}
-                      quantityInitial={item.quantity}
+                    <CartQuantityToggle
+                      quantity={item.quantity}
+                      setDecrement={() => setDecrement(item.id)}
+                      setIncrement={() => setIncrement(item.id)}
                     />
                   </div>
                   <span className="w-1/5 text-sm font-semibold text-center">
@@ -94,8 +100,9 @@ export default function Cart() {
             );
           })}
 
-          <a
-            href="#"
+          <Link
+                            to="/products"
+
             className="flex mt-10 text-sm font-semibold text-indigo-600"
           >
             <svg
@@ -105,7 +112,7 @@ export default function Cart() {
               <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
             </svg>
             Continue Shopping
-          </a>
+          </Link>
         </div>
 
         <div id="summary" className="w-1/4 px-8 py-10">
@@ -113,38 +120,31 @@ export default function Cart() {
             Order Summary
           </h1>
           <div className="flex justify-between mt-10 mb-5">
-            <span className="text-sm font-semibold uppercase">Items 3</span>
-            <span className="text-sm font-semibold">590$</span>
+            <span className="text-sm font-semibold uppercase">
+              Items {totalItem}
+            </span>
+            <span className="text-sm font-semibold">
+              {" "}
+              <FormatPrice price={totalAmount} />{" "}
+            </span>
           </div>
-          <div>
-            <label className="inline-block mb-3 text-sm font-medium uppercase">
-              Shippings
+          <div className="flex justify-between mt-10 mb-5">
+            <label className="text-sm font-semibold uppercase">
+              Shipping Charges
             </label>
-            <select className="block w-full p-2 text-sm text-gray-600">
-              <option>Standard shipping - $10.00</option>
-            </select>
+
+            <span className="text-sm font-semibold">
+              {" "}
+              <FormatPrice price={shippingFee} />
+            </span>
           </div>
-          <div className="py-10">
-            <label
-              htmlFor="promo"
-              className="inline-block mb-3 text-sm font-semibold uppercase"
-            >
-              Promo Code
-            </label>
-            <input
-              type="text"
-              id="promo"
-              placeholder="Enter your code"
-              className="w-full p-2 text-sm"
-            />
-          </div>
-          <button className="px-5 py-2 text-sm text-white uppercase bg-red-500 hover:bg-red-600">
-            Apply
-          </button>
+
           <div className="mt-8 border-t">
             <div className="flex justify-between py-6 text-sm font-semibold uppercase">
               <span>Total cost</span>
-              <span>$600</span>
+              <span>
+                <FormatPrice price={totalAmount + shippingFee} />{" "}
+              </span>
             </div>
             <button className="w-full py-3 text-sm font-semibold text-white uppercase bg-indigo-500 hover:bg-indigo-600">
               Checkout

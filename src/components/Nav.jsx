@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
+import { useCartContext } from "src/context/cartContext";
 
 export default function Nav() {
   const [mobileNav, setmobileNav] = useState(false);
-
+  const { totalItem } = useCartContext();
   return (
     <>
       <nav className="bg-gray-800">
@@ -75,7 +76,7 @@ export default function Nav() {
               >
                 <FiShoppingCart size="1.2rem" className="" />
                 <span className="absolute top-0 right-0 w-4 h-4 p-0 m-0 font-mono text-sm leading-tight text-center text-white bg-red-600 rounded-full top right">
-                  5
+                  {totalItem}
                 </span>
               </NavLink>
 

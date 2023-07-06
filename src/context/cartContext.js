@@ -28,14 +28,35 @@ export const CartContextProvider = ({ children }) => {
 
   //Add data in Local Storage
   useEffect(() => {
+    dispatch({ type: "CARTTOTALITEM" });
+    dispatch({ type: "CART_AMOUNT_TOTAL" });
+
     localStorage.setItem("cartStorage", JSON.stringify(state.cart));
   }, [state.cart]);
 
+  //Item increment and decrement
+  const setIncrement = (id) => {
+    dispatch({ type: "SET_INCREMENT", payload: id });
+  };
+
+  const setDecrement = (id) => {
+    dispatch({ type: "SET_DECREMENT", payload: id });
+  };
+
+  //Remove Items from the cart
   const removeItemFromCart = (id) => {
     dispatch({ type: "REMOVEITEM", payload: id });
   };
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItemFromCart }}>
+    <CartContext.Provider
+      value={{
+        ...state,
+        addToCart,
+        removeItemFromCart,
+        setIncrement,
+        setDecrement,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
