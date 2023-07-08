@@ -3,10 +3,13 @@ import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { useCartContext } from "src/context/cartContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Nav() {
   const [mobileNav, setmobileNav] = useState(false);
   const { totalItem } = useCartContext();
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+
   return (
     <>
       <nav className="bg-gray-800">
@@ -82,20 +85,26 @@ export default function Nav() {
 
               <div className="relative ml-3">
                 <div>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                    id="user-menu-button"
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    ></img>{" "}
-                  </button>
+                  {isAuthenticated ? (
+                    <button
+                      className="px-3 py-1.5 bg-primary-green text-white rounded mx-2"
+                      onClick={() =>
+                        logout({
+                          logoutParams: { returnTo: window.location.origin },
+                        })
+                      }
+                    >
+                      Log Out
+                    </button>
+                  ) : (
+                    <button
+                      className="px-3 py-1.5 bg-primary-green text-white rounded mx-2"
+                      onClick={() => loginWithRedirect()}
+                    >
+                      Log In
+                    </button>
+                  )}
+                  ;
                 </div>
 
                 {/* <div

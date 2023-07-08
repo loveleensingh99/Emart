@@ -101,8 +101,7 @@ export default function Cart() {
           })}
 
           <Link
-                            to="/products"
-
+            to="/products"
             className="flex mt-10 text-sm font-semibold text-indigo-600"
           >
             <svg
