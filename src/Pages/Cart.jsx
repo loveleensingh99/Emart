@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FormatPrice } from "src/Helper/ForamtPrice";
 import CartQuantityToggle from "src/components/CartQuantityToggle";
+import Footer from "src/components/Footer";
 import { useCartContext } from "src/context/cartContext";
 
 export default function Cart() {
@@ -151,6 +152,7 @@ export default function Cart() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

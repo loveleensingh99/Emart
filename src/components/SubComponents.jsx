@@ -3,7 +3,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
 export const Heading = ({ text }) => {
   return (
-    <h3 className="mb-8 text-2xl font-bold leading-none tracking-tighter text-center text-neutral-600 md:text-4xl lg:text-3xl">
+    <h3 className="mb-8 mt-10 text-2xl font-bold leading-none tracking-tighter text-center text-neutral-600 md:text-4xl lg:text-3xl">
       {text || "Type Heading Here"}
     </h3>
   );

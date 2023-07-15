@@ -32,7 +32,7 @@ export default function HeroSection({ myData }) {
                 built with Tailwind CSS, HTML &amp; Next.js.
               </p>
               <div className="mr-auto">
-                <NavLink to="/">
+                <NavLink to="products">
                   <Button className="bg-primary-blue">Shop Now</Button>
                 </NavLink>
               </div>

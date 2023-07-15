@@ -10,8 +10,9 @@ import Products from "./Pages/Products";
 import Cart from "./Pages/Cart";
 import ErrorPage from "./Pages/ErrorPage";
 import Home from "./Pages/Home";
-import About from "./Pages/About";
+import About from "./Pages/FAQ";
 import SingleProduct from "./Pages/SingleProduct";
+import FAQ from "./Pages/FAQ";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/about" element={<About />}></Route>
+          <Route path="/faq" element={<FAQ />}></Route>
           <Route path="/products" element={<Products />}></Route>
           <Route path="/singleproduct/:id" element={<SingleProduct />}></Route>
           <Route path="/contact" element={<Contact />}></Route>

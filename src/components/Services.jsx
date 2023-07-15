@@ -3,12 +3,15 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { GiReceiveMoney } from "react-icons/gi";
 import { MdSecurity } from "react-icons/md";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import { Heading } from "./SubComponents";
 
 export default function Services() {
   return (
     <>
+      <Heading text="Services" />
       <div className="md:grid md:grid-cols-3 grid-cols-1 space-y-5 md:space-y-0  space-x-0 md:space-x-4  xl:w-4/5 lg:w-5/6 mx-auto  ">
         {/* Service 1 */}
+
         <div className="bg-gray-200 group flex flex-col items-center justify-center rounded-xl py-4">
           <div className="bg-white rounded-full p-2 my-2">
             <TbTruckDelivery
