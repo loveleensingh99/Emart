@@ -40,7 +40,6 @@ export default function FilterSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
-    console.log("Toggle Sidebar", isSidebarOpen);
     setIsSidebarOpen(!isSidebarOpen);
   };
 

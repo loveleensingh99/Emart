@@ -45,7 +45,6 @@ export default function SingleProduct() {
 
   const handleStateQuantity = (quant) => setQuantity(quant);
 
-  console.log("stock singleProduct", stock);
   useEffect(() => {
     console.log("Quantity Select From Parent Component=", quantity);
   }, [quantity]);

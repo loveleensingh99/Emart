@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const ProductReducer = (state, action) => {
   switch (action.type) {
     case "SET_LOADING":
-      console.log("setloading call");
       return {
         ...state,
         isLoading: true,
@@ -19,7 +18,6 @@ const ProductReducer = (state, action) => {
       const featureData = action.payload.filter((currentElement) => {
         return currentElement.featured === true;
       });
-      console.log("featureData", featureData);
       return {
         ...state,
         isLoading: false,
@@ -28,7 +26,6 @@ const ProductReducer = (state, action) => {
       };
 
     case "SET_SINGLE_LOADING":
-      console.log("setloading call");
       return {
         ...state,
         isSingleLoading: true,

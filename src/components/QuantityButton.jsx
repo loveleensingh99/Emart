@@ -6,8 +6,7 @@ export default function QuantityButton({
   quantityInitial = 1,
 }) {
   const [amount, setAmount] = useState(quantityInitial);
-  console.log("Amount", amount);
-  console.log("stock", stock);
+ 
 
   const setDecrease = () => {
     amount > 1 ? setAmount(amount - 1) : setAmount(1);

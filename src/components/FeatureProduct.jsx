@@ -6,7 +6,6 @@ import Loading from "./Loading";
 
 export const FeatureProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
-  console.log("isLoading and featureProducts", featureProducts);
 
   return (
     <>

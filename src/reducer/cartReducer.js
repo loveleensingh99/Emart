@@ -1,19 +1,11 @@
- 
-
 export default function cartReducer(state, action) {
   if (action.type === "ADDTOCART") {
     let { id, color, quantity, singleProduct } = action.payload;
 
-    console.log("🚀 ~ state.cart", state.cart);
     //Tackle the existing product
     let existingProduct = state.cart.find((item) => item.id === id + color);
-    console.log(
-      "🚀 ~ file: cartReducer.js:9 ~ cartReducer ~ existingProduct:",
-      existingProduct
-    );
 
     if (existingProduct) {
-      console.log("Existing Product Found");
       let updatedProduct = state.cart.map((item) => {
         if (item.id === id + color) {
           let newQuantity = item.quantity + quantity;
@@ -33,8 +25,6 @@ export default function cartReducer(state, action) {
         cart: updatedProduct,
       };
     } else {
-      console.log("Existing Product Not Found");
-
       let cartProduct = {
         id: id + color,
         productName: singleProduct.name,
@@ -116,10 +106,6 @@ export default function cartReducer(state, action) {
       return initialVal;
     }, 0);
 
-    console.log(
-      "🚀 ~ file: cartReducer.js:1  20 ~ cartReducer ~ updatedTotalAmount:",
-      updatedTotalAmount
-    );
     return {
       ...state,
       totalAmount: updatedTotalAmount,

@@ -94,9 +94,18 @@ export default function Footer() {
             <span className="text-sm text-gray-100 sm:text-center ">
               © 2023{" "}
               <NavLink to="/" className="hover:underline">
-                E-MART
+                E-MART{" "}
               </NavLink>
-              . All Rights Reserved.
+              Developed by
+              <a
+                href="https://www.linkedin.com/in/loveleen-singh99/"
+                target="_blank"
+                className="hover:underline"
+                rel="noreferrer"
+              >
+                {" "}
+                Loveleen Singh
+              </a>
             </span>
             <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
               <a href="#" className="text-gray-100 hover:text-white ">

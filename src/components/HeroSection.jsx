@@ -11,9 +11,9 @@ export default function HeroSection({ myData }) {
           <div className="flex flex-wrap items-center mx-auto max-w-7xl place-items-center	 ">
             <div className="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
               <div className="relative w-full max-w-lg">
-                <div className="absolute top-0 rounded-full bg-violet-300 -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div className="absolute top-0 rounded-full bg-violet-300 -left-4 w-60 h-60 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
 
-                <div className="absolute rounded-full bg-green-300 -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                <div className="absolute rounded-full bg-green-300 -bottom-4 right-20 w-60  h-60 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
                 <div className="relative">
                   <img
                     className="object-cover object-center mx-auto "

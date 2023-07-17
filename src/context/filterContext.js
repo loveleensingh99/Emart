@@ -22,7 +22,6 @@ const initialState = {
 
 export const FilterContextProvider = ({ children }) => {
   const { products } = useProductContext();
-  console.log("Products from filter Context", products);
   const [state, dispatch] = useReducer(filterReducer, initialState);
 
   const setGridView = () => {
@@ -41,11 +40,7 @@ export const FilterContextProvider = ({ children }) => {
       payload: { products: products },
     });
   };
-
-  // useEffect(() => {
-  //   console.log("useEffet sorting product work");
-  // }, [state.sortingValue]);
-
+ 
   useEffect(() => {
     dispatch({ type: "FILTER_PRODUCTS" });
   }, [products, state.filters]);
