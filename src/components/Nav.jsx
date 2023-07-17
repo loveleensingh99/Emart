@@ -74,7 +74,7 @@ export default function Nav() {
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <NavLink
-                to="/contact"
+                to="/cart"
                 className="relative flex items-center px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
               >
                 <FiShoppingCart size="1.2rem" className="" />
