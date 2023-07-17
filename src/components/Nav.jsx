@@ -83,7 +83,7 @@ export default function Nav() {
                 </span>
               </NavLink>
 
-              <div className="relative ml-3">
+              <div className="relative ml-3 hidden sm:block">
                 <div>
                   {isAuthenticated ? (
                     <button
@@ -180,6 +180,28 @@ export default function Nav() {
             >
               Calendar
             </NavLink>
+            <div>
+              {isAuthenticated ? (
+                <button
+                  className="px-3 py-1.5 bg-primary-green text-white rounded mx-2"
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }
+                >
+                  Log Out
+                </button>
+              ) : (
+                <button
+                  className="px-3 py-1.5 bg-primary-green text-white rounded mx-2"
+                  onClick={() => loginWithRedirect()}
+                >
+                  Log In
+                </button>
+              )}
+              ;
+            </div>
           </div>
         </div>
       </nav>
